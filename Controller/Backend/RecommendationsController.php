@@ -10,12 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 class RecommendationsController extends \Shopware_Controllers_Backend_ExtJs
 {
     /**
-     * This URL might as well be configurable and therefore read from the
-     * database, it's written out here for demonstration purposes.
-     */
-    private const EXTERNAL_API_BASE_URL = 'https://example.com';
-
-    /**
      * @var HttpClientInterface
      */
     private $client;
@@ -40,7 +34,7 @@ class RecommendationsController extends \Shopware_Controllers_Backend_ExtJs
         $apiKey = $config['apiKey'];
 
         // Create a connection
-        $url = 'https://api.visualsearch.wien/api_key_verify';
+        $url = 'https://api.visualsearch.wien/api_key_verify_similar';
         $ch = curl_init($url);
 
         // Setting our options
