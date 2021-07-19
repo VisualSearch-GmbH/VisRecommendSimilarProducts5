@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.3/engine/Shopware/Components/Plugin/schema/plugin.xsd">
+
+    <label lang="de">Visuell Ähnliche Produktempfehlungen</label>
+    <label lang="en">Visually Similar Product Recommendations</label>
+
+    <version>1.0.0</version>
+    <copyright>(c) VisualSearch GmbH</copyright>
+    <license>MIT</license>
+    <link>https://www.visualsearch.at</link>
+    <author>VisualSearch GmbH</author>
+    <compatibility minVersion="5.2.0"/>
+</plugin>

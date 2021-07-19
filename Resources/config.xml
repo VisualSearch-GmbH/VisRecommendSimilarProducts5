@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../engine/Shopware/Components/Plugin/schema/config.xsd">
+
+    <elements>
+
+        <element required="true" type="text" scope="locale">
+            <name>apiKey</name>
+            <label lang="de">API-Schlüssel</label>
+            <label lang="en">API Key</label>
+            <value>preselection</value>
+            <description lang="de">Kontaktieren Sie bitte office@visualsearch.at, um Ihren API-Schlüssel zu erhalten</description>
+            <description lang="en">Please contact office@visualsearch.at to obtain your API key</description>
+        </element>
+        <element type="button">
+            <name>buttonTest</name>
+            <label lang="de">API-Zugangsdaten testen</label>
+            <label lang="en">Test API credentials</label>
+            <options>
+                <handler>
+                    <![CDATA[
+                    function() {
+                      Ext.Ajax.request({
+                        url: 'RecommendationsController/apiKeyVerify',
+                        success: function (response) {
+                          Shopware.Msg.createGrowlMessage(response.statusText, response.responseText)
+                        },
+                        failure: function (response) {
+                          if (response.status === 404) {
+                            Shopware.Msg.createGrowlMessage('Plugin Manager', 'Please activate plugin before testing api.');
+                          } else {
+                            Shopware.Msg.createGrowlMessage(response.statusText, response.responseText)
+                          }
+                        }
+                      });
+                    }
+                    ]]>
+                </handler>
+            </options>
+        </element>
+
+        <element required="true" type="text" scope="locale">
+            <name>cross</name>
+            <label lang="de">Name des Cross-Selling Tabs</label>
+            <label lang="en">Name of Cross Selling Tab</label>
+            <value>preselection</value>
+            <description lang="de">Definieren Sie den Anzeigenamen des Cross-Sellings</description>
+            <description lang="en">Define the display name of the cross-selling tab</description>
+        </element>
+    </elements>
+
+</config>
