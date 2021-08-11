@@ -33,12 +33,18 @@ class ControllerPath implements SubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return [
-            'Enlight_Controller_Dispatcher_ControllerPath_Api_RecommendationsUpdateAuto' => 'onGetControllerPathApi',
-        ];
+        return array(
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_RecommendationsApiKeyVerify' => 'onGetControllerPathApiApiKeyVerify',
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_RecommendationsUpdateAuto' => 'onGetControllerPathApiUpdateAuto',
+        );
     }
 
-    public function onGetControllerPathApi(Enlight_Event_EventArgs $args)
+    public function onGetControllerPathApiApiKeyVerify(Enlight_Event_EventArgs $args)
+    {
+        return __DIR__ . '/../Controller/Api/RecommendationsApiKeyVerify.php';
+    }
+
+    public function onGetControllerPathApiUpdateAuto(Enlight_Event_EventArgs $args)
     {
         return __DIR__ . '/../Controller/Api/RecommendationsUpdateAuto.php';
     }
