@@ -11,6 +11,13 @@
             <argument type="service" id="vis_recommend_similar_products5.logger" />
             <tag name="shopware.controller" module="backend" controller="RecommendationsController"/>
         </service>
+
+        <service id="vis_recommend_similar_products5.subscriber.controller_path"
+                 class="VisRecommendSimilarProducts5\Subscriber\ControllerPath" >
+            <argument type="service" id="service_container"/>
+            <argument>%vis_recommend_similar_products5.plugin_dir%</argument>
+            <tag name="shopware.event_subscriber"/>
+        </service>
     </services>
 
 </container>

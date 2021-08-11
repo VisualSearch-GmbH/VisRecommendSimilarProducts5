@@ -39,14 +39,6 @@
             </options>
         </element>
 
-        <element required="true" type="text" scope="locale">
-            <name>cross</name>
-            <label lang="de">Name des Cross-Selling Tabs</label>
-            <label lang="en">Name of Cross Selling Tab</label>
-            <value>preselection</value>
-            <description lang="de">Definieren Sie den Anzeigenamen des Cross-Sellings</description>
-            <description lang="en">Define the display name of the cross-selling tab</description>
-        </element>
     </elements>
 
 </config>

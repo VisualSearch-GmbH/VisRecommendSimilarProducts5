@@ -11,4 +11,8 @@
     <link>https://www.visualsearch.at</link>
     <author>VisualSearch GmbH</author>
     <compatibility minVersion="5.2.0"/>
+
+    <description lang="de">Empfehlungen für visuell ähnliche Produkte auf der Produktdetailseite.</description>
+    <description lang="en">Recommends visually similar products in the product detail page.</description>
+
 </plugin>
