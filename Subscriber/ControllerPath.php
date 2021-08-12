@@ -34,18 +34,24 @@ class ControllerPath implements SubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'Enlight_Controller_Dispatcher_ControllerPath_Api_RecommendationsApiKeyVerify' => 'onGetControllerPathApiApiKeyVerify',
-            'Enlight_Controller_Dispatcher_ControllerPath_Api_RecommendationsUpdateAuto' => 'onGetControllerPathApiUpdateAuto',
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_SimilarApiKeyVerify' => 'onGetControllerPathApiKeyVerify',
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_SimilarDeleteCross' => 'onGetControllerPathDeleteCross',
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_SimilarUpdateAuto' => 'onGetControllerPathUpdateAuto',
         );
     }
 
-    public function onGetControllerPathApiApiKeyVerify(Enlight_Event_EventArgs $args)
+    public function onGetControllerPathApiKeyVerify(Enlight_Event_EventArgs $args)
     {
-        return __DIR__ . '/../Controller/Api/RecommendationsApiKeyVerify.php';
+        return __DIR__ . '/../Controller/Api/SimilarApiKeyVerify.php';
     }
 
-    public function onGetControllerPathApiUpdateAuto(Enlight_Event_EventArgs $args)
+    public function onGetControllerPathDeleteCross(Enlight_Event_EventArgs $args)
     {
-        return __DIR__ . '/../Controller/Api/RecommendationsUpdateAuto.php';
+        return __DIR__ . '/../Controller/Api/SimilarDeleteCross.php';
+    }
+
+    public function onGetControllerPathUpdateAuto(Enlight_Event_EventArgs $args)
+    {
+        return __DIR__ . '/../Controller/Api/SimilarUpdateAuto.php';
     }
 }

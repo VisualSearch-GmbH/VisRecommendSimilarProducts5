@@ -3,7 +3,7 @@
 use Doctrine\DBAL\Connection;
 use Shopware\Components\Api\Resource\Article;
 
-class Shopware_Controllers_Api_RecommendationsApiKeyVerify extends \Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SimilarApiKeyVerify extends \Shopware_Controllers_Api_Rest
 {
     /**
      * @throws Exception

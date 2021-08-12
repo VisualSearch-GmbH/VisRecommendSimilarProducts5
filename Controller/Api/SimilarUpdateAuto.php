@@ -3,7 +3,7 @@
 use Doctrine\DBAL\Connection;
 use Shopware\Components\Api\Resource\Article;
 
-class Shopware_Controllers_Api_RecommendationsUpdateAuto extends \Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_Api_Rest
 {
     /**
      * @throws Exception
@@ -12,10 +12,10 @@ class Shopware_Controllers_Api_RecommendationsUpdateAuto extends \Shopware_Contr
     {
         $config = $this->container->get('shopware.plugin.cached_config_reader')->getByPluginName('VisRecommendSimilarProducts5');
 
-        if(!$config['enabled']){
-            $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: automatic updates not enabled']);
-            return $this->View();
-        }
+        //if(!$config['enabled']){
+        //    $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: automatic updates not enabled']);
+        //    return $this->View();
+        //}
 
         $productsIds = $this->getProductsIds();
 
