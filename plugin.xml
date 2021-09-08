@@ -10,9 +10,18 @@
     <license>MIT</license>
     <link>https://www.visualsearch.at</link>
     <author>VisualSearch GmbH</author>
-    <compatibility minVersion="5.2.0"/>
+    <compatibility minVersion="5.3.0"/>
 
     <description lang="de">Empfehlungen für visuell ähnliche Produkte auf der Produktdetailseite.</description>
     <description lang="en">Recommends visually similar products in the product detail page.</description>
+
+    <changelog version="1.0.0">
+        <changes lang="de">
+            Erste Version des Plugins
+        </changes>
+        <changes lang="en">
+            First version of the plugin
+        </changes>
+    </changelog>
 
 </plugin>

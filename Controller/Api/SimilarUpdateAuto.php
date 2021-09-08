@@ -1,6 +1,7 @@
 <?php
 
 use Doctrine\DBAL\Connection;
+use Shopware\Bundle\MediaBundle\MediaService;
 use Shopware\Components\Api\Resource\Article;
 
 class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_Api_Rest
@@ -26,13 +27,30 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
 
         /** @var Article $productApiService */
         $productApiService = $this->container->get('shopware.api.article');
+
+        /** @var MediaService $mediaService */
+        $mediaService = $this->container->get('shopware_media.media_service');
+
         $productsWithoutCrossSelling = [];
 
         foreach($productsIds as $productId) {
             $isSimilarProduct = $this->isSimilar($productId['id']);
             if(count($isSimilarProduct) == 0) {
                 $productTemp = $productApiService->getOne($productId['id']);
-                array_push($productsWithoutCrossSelling, $productTemp);
+
+                $categories = [];
+                foreach ($productTemp['categories'] as $category) {
+                    array_push($categories, $category['id']);
+                }
+                $categories = implode("-", $categories);
+
+                $images = [];
+                foreach ($productTemp['images'] as $image) {
+                    $mediaPath = $this->getPath($image['mediaId']);
+                    array_push($images, $mediaService->getUrl($mediaPath[0]['path']));
+                }
+
+                array_push($productsWithoutCrossSelling, [$productTemp['id'], $productTemp['name'], $categories, array_values($images)[0]]);
             }
         }
 
@@ -50,7 +68,7 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
         return $this->View();
     }
 
-    public function updateProducts($apiKey, $products, $systemHosts): string
+    public function updateProducts($apiKey, $products, $systemHosts)
     {
         // Form data for the API request
         $data = ["products" => $products];
@@ -69,7 +87,7 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json',
             'Vis-API-KEY:'. $apiKey,
             'Vis-SYSTEM-HOSTS:'. $systemHosts,
-            'Vis-SYSTEM-TYPE:shopware6'));
+            'Vis-SYSTEM-TYPE:shopware5'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         try{
             // Get the response
@@ -130,5 +148,20 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
             array_push($systemHosts, $secure . $shop['host'] . $shop['base_path']);
         }
         return implode(";",$systemHosts);
+    }
+
+    private function getPath($mediaId)
+    {
+        /** @var Connection $connection */
+        $connection = $this->container->get('dbal_connection');
+
+        return $connection->createQueryBuilder()
+            ->select('path')
+            ->from('s_media', 'media')
+            ->where('media.id = :mediaId')
+            ->setParameter('mediaId',  $mediaId)
+            ->execute()
+            ->fetchAll();
+
     }
 }
