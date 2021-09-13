@@ -12,8 +12,8 @@
     <author>VisualSearch GmbH</author>
     <compatibility minVersion="5.3.0"/>
 
-    <description lang="de">Empfehlungen für visuell ähnliche Produkte auf der Produktdetailseite.</description>
-    <description lang="en">Recommends visually similar products in the product detail page.</description>
+    <description lang="de">Empfehlungen für visuell ähnliche Produkte auf der Produktdetailseite. Besuchen Sie bitte diese Seite, um Ihren API-Schlüssel zu erhalten: https://www.visualsearch.at/index.php/credentials/</description>
+    <description lang="en">Recommends visually similar products in the product detail page. Please visit this page to obtain your API key: https://www.visualsearch.at/index.php/credentials/</description>
 
     <changelog version="1.0.0">
         <changes lang="de">

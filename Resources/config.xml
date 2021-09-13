@@ -9,8 +9,8 @@
             <label lang="de">API-Schlüssel</label>
             <label lang="en">API Key</label>
             <value>preselection</value>
-            <description lang="de">Kontaktieren Sie bitte office@visualsearch.at, um Ihren API-Schlüssel zu erhalten</description>
-            <description lang="en">Please contact office@visualsearch.at to obtain your API key</description>
+            <description lang="de">Bitte geben Sie Ihren API-Schlüssel ein</description>
+            <description lang="en">Please enter your API key</description>
         </element>
         <element type="button">
             <name>buttonTest</name>

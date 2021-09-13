@@ -50,7 +50,7 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
                     array_push($images, $mediaService->getUrl($mediaPath[0]['path']));
                 }
 
-                array_push($productsWithoutCrossSelling, [$productTemp['id'], $productTemp['name'], $categories, array_values($images)[0]]);
+                array_push($productsWithoutCrossSelling, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
             }
         }
 
