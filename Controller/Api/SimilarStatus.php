@@ -48,7 +48,7 @@ class Shopware_Controllers_Api_SimilarStatus extends \Shopware_Controllers_Api_R
             return $this->View();
         }
         else {
-            $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: size catalogue:'.$sp.';update of cross-sellings not needed']);
+            $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: size catalogue:'.$sp.';update of cross-sellings is needed']);
             return $this->View();
         }
     }
