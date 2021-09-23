@@ -36,6 +36,7 @@ class ControllerPath implements SubscriberInterface
         return array(
             'Enlight_Controller_Dispatcher_ControllerPath_Api_SimilarApiKeyVerify' => 'onGetControllerPathApiKeyVerify',
             'Enlight_Controller_Dispatcher_ControllerPath_Api_SimilarDeleteCross' => 'onGetControllerPathDeleteCross',
+            'Enlight_Controller_Dispatcher_ControllerPath_Api_SimilarStatus' => 'onGetControllerPathStatus',
             'Enlight_Controller_Dispatcher_ControllerPath_Api_SimilarUpdateAuto' => 'onGetControllerPathUpdateAuto',
         );
     }
@@ -48,6 +49,11 @@ class ControllerPath implements SubscriberInterface
     public function onGetControllerPathDeleteCross(Enlight_Event_EventArgs $args)
     {
         return __DIR__ . '/../Controller/Api/SimilarDeleteCross.php';
+    }
+
+    public function onGetControllerPathStatus(Enlight_Event_EventArgs $args)
+    {
+        return __DIR__ . '/../Controller/Api/SimilarStatus.php';
     }
 
     public function onGetControllerPathUpdateAuto(Enlight_Event_EventArgs $args)
