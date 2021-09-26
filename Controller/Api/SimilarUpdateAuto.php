@@ -31,8 +31,39 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
         /** @var MediaService $mediaService */
         $mediaService = $this->container->get('shopware_media.media_service');
 
-        $productsCrossSelling = [];
+        $productsWithoutCrossSelling = [];
 
+        /** find out if all products have cross sellings **/
+        foreach($productsIds as $productId) {
+            $isSimilarProduct = $this->isSimilar($productId['id']);
+            if(count($isSimilarProduct) == 0) {
+                $productTemp = $productApiService->getOne($productId['id']);
+
+                $categories = [];
+                foreach ($productTemp['categories'] as $category) {
+                    array_push($categories, $category['id']);
+                }
+                $categories = implode("-", $categories);
+
+                $images = [];
+                foreach ($productTemp['images'] as $image) {
+                    $mediaPath = $this->getPath($image['mediaId']);
+                    array_push($images, $mediaService->getUrl($mediaPath[0]['path']));
+                }
+
+                array_push($productsWithoutCrossSelling, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
+            }
+        }
+
+        /** all products have cross sellings **/
+        if (count($productsWithoutCrossSelling) == 0) {
+            $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: all products have cross-sellings']);
+            return $this->View();
+        }
+
+        $allProducts = [];
+
+        /** update all products **/
         foreach($productsIds as $productId) {
 
             $productTemp = $productApiService->getOne($productId['id']);
@@ -49,18 +80,13 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
                array_push($images, $mediaService->getUrl($mediaPath[0]['path']));
             }
 
-            array_push($productsCrossSelling, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
-        }
-
-        if (count($productsCrossSelling) == 0) {
-            $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: all products have cross-sellings']);
-            return $this->View();
+            array_push($allProducts, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
         }
 
         $apiKey = $config['apiKey'];
         $systemHosts = $this->getHosts();
 
-        $message = $this->updateProducts($apiKey, $productsCrossSelling, $systemHosts);
+        $message = $this->updateProducts($apiKey, $allProducts, $systemHosts);
 
         $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: ' . $message]);
         return $this->View();
