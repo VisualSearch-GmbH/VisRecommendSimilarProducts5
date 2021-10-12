@@ -12,8 +12,39 @@
     <author>VisualSearch GmbH</author>
     <compatibility minVersion="5.3.0"/>
 
-    <description lang="de">Empfehlungen für visuell ähnliche Produkte auf der Produktdetailseite. Besuchen Sie bitte diese Seite, um Ihren API-Schlüssel zu erhalten: https://www.visualsearch.at/index.php/credentials/</description>
-    <description lang="en">Recommends visually similar products in the product detail page. Please visit this page to obtain your API key: https://www.visualsearch.at/index.php/credentials/</description>
+    <description lang="de"><![CDATA[
+        <h2>Automatische Erstellung visuell ähnlicher Produktempfehlungen</h2><br>
+        <p>Dieses
+        Plugin bietet eine automatische Erstellung von visuell ähnlichen
+        Empfehlungen für alle verfügbaren Produkte. Die Erstellung dieser
+        Empfehlungen ist durch einen innovativen Algorithmus möglich, der
+        visuell verwandte Produkte in allen verfügbaren Kategorien automatisch
+        findet.</p><br>
+        <p>In diesem Plugin werden die
+        bereitgestellten Empfehlungen mit einem maßgeschneiderten KI-Algorithmus
+        erstellt. Dieser Algorithmus läuft auf einem externen Server und ein <strong>gültiger API-Schlüssel</strong> wird benötigt, um auf diesen Dienst zuzugreifen.</p><br>
+        <p>Bitte klicken Sie <a href="https://www.visualsearch.at/index.php/credentials/" target="_blank" rel="noreferrer">hier</a>, um unsere Website zu besuchen und Ihren API-Schlüssel anzufordern.</p><br>
+        <p>Die Installationsanleitung finden Sie bitte <a href="https://github.com/VisualSearch-GmbH/VisRecommendSimilarProducts5" target="_blank" rel="noreferrer">hier.</a></p><br>
+        <h3>Kontakt</h3>
+        <p>E-Mail: office@visualsearch.at, Web: <a href="https://www.visualsearch.at" target="_blank" rel="noreferrer">www.visualsearch.at</a>, Handy: +43 670 6017118</p>
+        ]]>
+    </description>
+    <description lang="en"><![CDATA[
+        <h2>Automatically generates visually similar product recommendations</h2><br>
+        <p>This
+        plugin provides automatic creation of visually similar recommendations
+        for all available products. The creation of these recommendations is
+        possible using an innovative algorithm that automatically finds visually
+        related products in all available categories.</p><br>
+        <p>In this plugin, the provided recommendations are created
+        with a custom AI algorithm. This algorithm is running on an external
+        server and a <strong>valid API key</strong> is needed to access this service.</p><br>
+        <p>Please click <a href="https://www.visualsearch.at/index.php/credentials/" target="_blank" rel="noreferrer">here</a> to visit our website and request your API key.</p><br>
+        <p>Please find the installation instructions <a href="https://github.com/VisualSearch-GmbH/VisRecommendSimilarProducts5" target="_blank" rel="noreferrer">here.</a></p><br>
+        <h3>Contact</h3>
+        <p>E-Mail: office@visualsearch.at, Web: <a href="https://www.visualsearch.at" target="_blank" rel="noreferrer">www.visualsearch.at</a>, Phone: +43 670 6017118</p>
+        ]]>
+    </description>
 
     <changelog version="1.0.0">
         <changes lang="de">
