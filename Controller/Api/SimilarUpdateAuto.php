@@ -35,9 +35,16 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
 
         /** find out if all products have cross sellings **/
         foreach ($productsIds as $productId) {
+
+            $productTemp = $productApiService->getOne($productId['id']);
+
+            // skip not active products
+            if ($productTemp['active'] != 1) {
+                continue;
+            }
+
             $isSimilarProduct = $this->isSimilar($productId['id']);
             if (count($isSimilarProduct) == 0) {
-                $productTemp = $productApiService->getOne($productId['id']);
 
                 $categories = [];
                 foreach ($productTemp['categories'] as $category) {
@@ -66,6 +73,11 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
         /** update all products **/
         foreach ($productsIds as $productId) {
             $productTemp = $productApiService->getOne($productId['id']);
+
+            // skip not active products
+            if ($productTemp['active'] != 1) {
+                continue;
+            }
 
             $categories = [];
             foreach ($productTemp['categories'] as $category) {

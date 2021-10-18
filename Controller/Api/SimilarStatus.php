@@ -23,9 +23,16 @@ class Shopware_Controllers_Api_SimilarStatus extends \Shopware_Controllers_Api_R
         $productsWithoutCrossSelling = [];
 
         foreach ($productsIds as $productId) {
+
+            $productTemp = $productApiService->getOne($productId['id']);
+
+            // skip not active products
+            if ($productTemp['active'] != 1) {
+                continue;
+            }
+
             $isSimilarProduct = $this->isSimilar($productId['id']);
             if (count($isSimilarProduct) == 0) {
-                $productTemp = $productApiService->getOne($productId['id']);
 
                 $categories = [];
                 foreach ($productTemp['categories'] as $category) {
