@@ -22,9 +22,9 @@ class Shopware_Controllers_Api_SimilarStatus extends \Shopware_Controllers_Api_R
 
         $productsWithoutCrossSelling = [];
 
-        foreach($productsIds as $productId) {
+        foreach ($productsIds as $productId) {
             $isSimilarProduct = $this->isSimilar($productId['id']);
-            if(count($isSimilarProduct) == 0) {
+            if (count($isSimilarProduct) == 0) {
                 $productTemp = $productApiService->getOne($productId['id']);
 
                 $categories = [];
@@ -46,8 +46,7 @@ class Shopware_Controllers_Api_SimilarStatus extends \Shopware_Controllers_Api_R
         if (count($productsWithoutCrossSelling) == 0) {
             $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: size catalogue:'.$sp.';all products have cross-sellings']);
             return $this->View();
-        }
-        else {
+        } else {
             $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: size catalogue:'.$sp.';update of cross-sellings is needed']);
             return $this->View();
         }
@@ -74,7 +73,7 @@ class Shopware_Controllers_Api_SimilarStatus extends \Shopware_Controllers_Api_R
             ->select('*')
             ->from('s_articles_similar', 'similarArticles')
             ->where('similarArticles.articleID = :articleID')
-            ->setParameter('articleID',  $articleId)
+            ->setParameter('articleID', $articleId)
             ->execute()
             ->fetchAll();
     }
@@ -88,10 +87,8 @@ class Shopware_Controllers_Api_SimilarStatus extends \Shopware_Controllers_Api_R
             ->select('path')
             ->from('s_media', 'media')
             ->where('media.id = :mediaId')
-            ->setParameter('mediaId',  $mediaId)
+            ->setParameter('mediaId', $mediaId)
             ->execute()
             ->fetchAll();
-
     }
-
 }

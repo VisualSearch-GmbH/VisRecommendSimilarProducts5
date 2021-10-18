@@ -23,13 +23,13 @@ class Shopware_Controllers_Api_SimilarApiKeyVerify extends \Shopware_Controllers
             'Vis-API-KEY:'.$apiKey));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        try{
+        try {
             // Get the response
             $response = curl_exec($ch);
             curl_close($ch);
             $msg = json_decode($response);
             $this->View()->assign(['success' => "true"]);
-        }catch(Exception $e){
+        } catch (Exception $e) {
             $msg = $e->getMessage();
             $this->View()->assign(['code' => $msg->{'code'}, 'message' => $msg]);
         }

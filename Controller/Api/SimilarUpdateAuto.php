@@ -34,9 +34,9 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
         $productsWithoutCrossSelling = [];
 
         /** find out if all products have cross sellings **/
-        foreach($productsIds as $productId) {
+        foreach ($productsIds as $productId) {
             $isSimilarProduct = $this->isSimilar($productId['id']);
-            if(count($isSimilarProduct) == 0) {
+            if (count($isSimilarProduct) == 0) {
                 $productTemp = $productApiService->getOne($productId['id']);
 
                 $categories = [];
@@ -64,8 +64,7 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
         $allProducts = [];
 
         /** update all products **/
-        foreach($productsIds as $productId) {
-
+        foreach ($productsIds as $productId) {
             $productTemp = $productApiService->getOne($productId['id']);
 
             $categories = [];
@@ -76,8 +75,8 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
 
             $images = [];
             foreach ($productTemp['images'] as $image) {
-               $mediaPath = $this->getPath($image['mediaId']);
-               array_push($images, $mediaService->getUrl($mediaPath[0]['path']));
+                $mediaPath = $this->getPath($image['mediaId']);
+                array_push($images, $mediaService->getUrl($mediaPath[0]['path']));
             }
 
             array_push($allProducts, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
@@ -113,14 +112,14 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
             'Vis-SYSTEM-HOSTS:'. $systemHosts,
             'Vis-SYSTEM-TYPE:shopware5'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        try{
+        try {
             // Get the response
             $response = curl_exec($ch);
             curl_close($ch);
             $response = json_decode($response);
 
             return $response->{'message'};
-        }catch(Exception $e){
+        } catch (Exception $e) {
             return $e->getMessage();
         }
     }
@@ -146,7 +145,7 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
             ->select('*')
             ->from('s_articles_similar', 'similarArticles')
             ->where('similarArticles.articleID = :articleID')
-            ->setParameter('articleID',  $articleId)
+            ->setParameter('articleID', $articleId)
             ->execute()
             ->fetchAll();
     }
@@ -164,14 +163,14 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
 
         $systemHosts = [];
 
-        foreach($shops as $shop) {
+        foreach ($shops as $shop) {
             $secure = 'https://';
-            if($shop['secure'] == 0) {
+            if ($shop['secure'] == 0) {
                 $secure = 'http://';
             }
             array_push($systemHosts, $secure . $shop['host'] . $shop['base_path']);
         }
-        return implode(";",$systemHosts);
+        return implode(";", $systemHosts);
     }
 
     private function getPath($mediaId)
@@ -183,9 +182,8 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
             ->select('path')
             ->from('s_media', 'media')
             ->where('media.id = :mediaId')
-            ->setParameter('mediaId',  $mediaId)
+            ->setParameter('mediaId', $mediaId)
             ->execute()
             ->fetchAll();
-
     }
 }

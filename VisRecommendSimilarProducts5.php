@@ -159,14 +159,14 @@ class VisRecommendSimilarProducts5 extends Plugin
 
         $systemHosts = [];
 
-        foreach($shops as $shop) {
+        foreach ($shops as $shop) {
             $secure = 'https://';
-            if($shop['secure'] == 0) {
+            if ($shop['secure'] == 0) {
                 $secure = 'http://';
             }
             array_push($systemHosts, $secure . $shop['host'] . $shop['base_path']);
         }
-        return implode(";",$systemHosts);
+        return implode(";", $systemHosts);
     }
 
     private function getResourceByName(string  $name)
@@ -242,5 +242,4 @@ class VisRecommendSimilarProducts5 extends Plugin
         curl_exec($ch);
         curl_close($ch);
     }
-
 }

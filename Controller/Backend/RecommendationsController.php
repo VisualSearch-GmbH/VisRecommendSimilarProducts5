@@ -18,7 +18,7 @@ class RecommendationsController extends \Shopware_Controllers_Backend_ExtJs
      * @var Logger
      */
     private $logger;
-    
+
 
     public function __construct(HttpClientInterface $client, Logger $logger)
     {
@@ -43,18 +43,18 @@ class RecommendationsController extends \Shopware_Controllers_Backend_ExtJs
             'Vis-API-KEY:'.$apiKey));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-        try{
+        try {
             // Get the response
             $response = curl_exec($ch);
             curl_close($ch);
             $response = json_decode($response, true);
 
-            if($response['message'] == "API key ok"){
+            if ($response['message'] == "API key ok") {
                 $this->View()->assign('response', 'Connection was successfully established.');
-            }else{
+            } else {
                 $this->View()->assign('response', 'Connection could not be established. Please check your API credentials.');
             }
-        }catch(RequestException $exception){
+        } catch (RequestException $exception) {
             $this->response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
             $this->View()->assign('response', $exception->getMessage());
         }
