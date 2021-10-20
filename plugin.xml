@@ -3,14 +3,14 @@
         xsi:noNamespaceSchemaLocation="../../../engine/Shopware/Components/Plugin/schema/plugin.xsd">
 
     <label lang="de">Visuell Ähnliche Produktempfehlungen</label>
-    <label lang="en">Visually Similar Product Recommendations</label>
+    <label>Visually Similar Product Recommendations</label>
 
     <version>1.0.0</version>
     <copyright>(c) VisualSearch GmbH</copyright>
     <license>MIT</license>
     <link>https://github.com/VisualSearch-GmbH/VisRecommendSimilarProducts5</link>
     <author>VisualSearch GmbH</author>
-    <compatibility minVersion="5.3.0"/>
+    <compatibility minVersion="5.6.0"/>
 
     <description lang="de"><![CDATA[
         <h2>Automatische Erstellung visuell ähnlicher Produktempfehlungen</h2><br>
@@ -29,7 +29,7 @@
         <p>E-Mail: office@visualsearch.at, Web: <a href="https://www.visualsearch.at" target="_blank" rel="noreferrer">www.visualsearch.at</a>, Handy: +43 670 6017118</p>
         ]]>
     </description>
-    <description lang="en"><![CDATA[
+    <description><![CDATA[
         <h2>Automatically generates visually similar product recommendations</h2><br>
         <p>This
         plugin provides automatic creation of visually similar recommendations
@@ -50,7 +50,7 @@
         <changes lang="de">
             Erste Version des Plugins
         </changes>
-        <changes lang="en">
+        <changes>
             First version of the plugin
         </changes>
     </changelog>

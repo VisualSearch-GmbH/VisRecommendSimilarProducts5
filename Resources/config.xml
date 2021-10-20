@@ -7,15 +7,15 @@
         <element required="true" type="text" scope="locale">
             <name>apiKey</name>
             <label lang="de">API-Schlüssel</label>
-            <label lang="en">API Key</label>
+            <label>API Key</label>
             <value>preselection</value>
             <description lang="de">Bitte geben Sie Ihren API-Schlüssel ein</description>
-            <description lang="en">Please enter your API key</description>
+            <description>Please enter your API key</description>
         </element>
         <element type="button">
             <name>buttonTest</name>
             <label lang="de">API-Zugangsdaten testen</label>
-            <label lang="en">Test API credentials</label>
+            <label>Test API credentials</label>
             <options>
                 <handler>
                     <![CDATA[
