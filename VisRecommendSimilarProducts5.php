@@ -106,7 +106,7 @@ class VisRecommendSimilarProducts5 extends Plugin
                 WHERE `id` = ?
                 ';
 
-        $db->fetchRow(
+        $db->executeQuery(
             $sql,
             [
                 $roleId
@@ -118,7 +118,7 @@ class VisRecommendSimilarProducts5 extends Plugin
                 WHERE `roleID` = ?
                 ';
 
-        $db->fetchRow(
+        $db->executeQuery(
             $sql,
             [
                 $roleId
@@ -138,7 +138,7 @@ class VisRecommendSimilarProducts5 extends Plugin
                 WHERE `username` = "VisualSearch" and `roleID` = ?
                 ';
 
-        $db->fetchRow(
+        $db->executeQuery(
             $sql,
             [
                 $roleId

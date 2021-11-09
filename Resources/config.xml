@@ -23,13 +23,27 @@
                       Ext.Ajax.request({
                         url: 'RecommendationsController/apiKeyVerify',
                         success: function (response) {
-                          Shopware.Msg.createGrowlMessage(response.statusText, response.responseText)
+                          try{
+                            let content = Ext.JSON.decode(response.responseText);
+                            if(content.success){
+                              Shopware.Msg.createGrowlMessage(response.statusText, content.response);
+                              return;
+                            }
+                          }catch(e){}
+                          Shopware.Msg.createGrowlMessage('Error', 'Please make sure plugin is active and the api credentials are valid.');
                         },
                         failure: function (response) {
                           if (response.status === 404) {
                             Shopware.Msg.createGrowlMessage('Plugin Manager', 'Please activate plugin before testing api.');
                           } else {
-                            Shopware.Msg.createGrowlMessage(response.statusText, response.responseText)
+                            let message = response.responseText;
+                            try{
+                              let content = Ext.JSON.decode(response.responseText);
+                              if(content.response){
+                                message = content.response;
+                              }
+                            }catch(e){}
+                            Shopware.Msg.createGrowlMessage(response.statusText, 'Please make sure plugin is active and the api credentials are valid.' + (message ? '<br/>' + message : ''));
                           }
                         }
                       });
