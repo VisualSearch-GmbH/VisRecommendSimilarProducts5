@@ -4,6 +4,7 @@ namespace VisRecommendSimilarProducts5;
 
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\Context\InstallContext;
+use Shopware\Components\Plugin\Context\UninstallContext;
 
 class VisRecommendSimilarProducts5 extends Plugin
 {
@@ -17,10 +18,12 @@ class VisRecommendSimilarProducts5 extends Plugin
         $this->notification($hosts, $keys, 'shopware5;install');
     }
 
-    public function uninstall(InstallContext $context)
+    public function uninstall(UninstallContext $context)
     {
-        $this->deleteUser();
-        $this->deleteRole();
+        if (!$context->keepUserData()) {
+            $this->deleteUser();
+            $this->deleteRole();
+        }
 
         $hosts = $this->getHosts();
         $this->notification($hosts, '', 'shopware5;uninstall');
