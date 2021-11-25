@@ -4,7 +4,7 @@ use Doctrine\DBAL\Connection;
 use Shopware\Bundle\MediaBundle\MediaService;
 use Shopware\Components\Api\Resource\Article;
 
-class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_Api_Rest
+class Shopware_Controllers_Api_SimilarUpdateCategories extends \Shopware_Controllers_Api_Rest
 {
     /**
      * @throws Exception
@@ -32,7 +32,6 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
         $mediaService = $this->container->get('shopware_media.media_service');
 
         /** find out if all products have cross sellings **/
-        $firstCategory = '';
         foreach ($productsIds as $productId) {
 
             $productTemp = $productApiService->getOne($productId['id']);
@@ -83,13 +82,7 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
                 array_push($images, $mediaService->getUrl($mediaPath[0]['path']));
             }
 
-            if (sizeof($productsIds) > 10000) {
-                if (strcmp($categories,$firstCategory) == 0) {
-                    array_push($allProducts, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
-                }
-            } else {
-                array_push($allProducts, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
-            }
+            array_push($allProducts, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
         }
 
         $apiKey = $config['apiKey'];

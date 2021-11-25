@@ -17,11 +17,7 @@ class Shopware_Controllers_Api_SimilarStatus extends \Shopware_Controllers_Api_R
         /** @var Article $productApiService */
         $productApiService = $this->container->get('shopware.api.article');
 
-        /** @var MediaService $mediaService */
-        $mediaService = $this->container->get('shopware_media.media_service');
-
-        $productsWithoutCrossSelling = [];
-
+        $firstCategory = '';
         foreach ($productsIds as $productId) {
 
             $productTemp = $productApiService->getOne($productId['id']);
@@ -38,19 +34,12 @@ class Shopware_Controllers_Api_SimilarStatus extends \Shopware_Controllers_Api_R
                 foreach ($productTemp['categories'] as $category) {
                     array_push($categories, $category['id']);
                 }
-                $categories = implode("-", $categories);
-
-                $images = [];
-                foreach ($productTemp['images'] as $image) {
-                    $mediaPath = $this->getPath($image['mediaId']);
-                    array_push($images, $mediaService->getUrl($mediaPath[0]['path']));
-                }
-
-                array_push($productsWithoutCrossSelling, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
+                $firstCategory = implode("-", $categories);
+                break;
             }
         }
 
-        if (count($productsWithoutCrossSelling) == 0) {
+        if (empty($firstCategory)) {
             $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: size catalogue:'.$sp.';all products have cross-sellings']);
             return $this->View();
         } else {
