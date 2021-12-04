@@ -31,34 +31,6 @@ class Shopware_Controllers_Api_SimilarUpdateCategories extends \Shopware_Control
         /** @var MediaService $mediaService */
         $mediaService = $this->container->get('shopware_media.media_service');
 
-        /** find out if all products have cross sellings **/
-        foreach ($productsIds as $productId) {
-
-            $productTemp = $productApiService->getOne($productId['id']);
-
-            // skip not active products
-            if ($productTemp['active'] != 1) {
-                continue;
-            }
-
-            $isSimilarProduct = $this->isSimilar($productId['id']);
-            if (count($isSimilarProduct) == 0) {
-
-                $categories = [];
-                foreach ($productTemp['categories'] as $category) {
-                    array_push($categories, $category['id']);
-                }
-                $firstCategory = implode("-", $categories);
-                break;
-            }
-        }
-
-        /** all products have cross sellings **/
-        if (empty($firstCategory)) {
-            $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: all products have cross-sellings']);
-            return $this->View();
-        }
-
         $allProducts = [];
 
         /** update all products **/
