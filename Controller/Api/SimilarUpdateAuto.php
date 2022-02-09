@@ -12,6 +12,12 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
     public function indexAction()
     {
         $config = $this->container->get('shopware.plugin.cached_config_reader')->getByPluginName('VisRecommendSimilarProducts5');
+        $autoUpdate = $config['autoUpdate'];
+
+        if(!$autoUpdate) {
+            $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: automatic updates not enabled']);
+            return $this->View();
+        }
 
         //if(!$config['enabled']){
         //    $this->View()->assign(['code' => 200, 'message' => 'Info VisRecommendSimilarProducts: automatic updates not enabled']);
@@ -47,7 +53,7 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
 
                 $categories = [];
                 foreach ($productTemp['categories'] as $category) {
-                    array_push($categories, $category['id']);
+                    array_push($categories, strval($category['id']));
                 }
                 $firstCategory = implode("-", $categories);
                 break;
@@ -73,9 +79,9 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
 
             $categories = [];
             foreach ($productTemp['categories'] as $category) {
-                array_push($categories, $category['id']);
+                array_push($categories, strval($category['id']));
             }
-            $categories = implode("-", $categories);
+            $catName = implode("-", $categories);
 
             $images = [];
             foreach ($productTemp['images'] as $image) {
@@ -84,7 +90,7 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
             }
 
             if (sizeof($productsIds) > 10000) {
-                if (strcmp($categories,$firstCategory) == 0) {
+                if (strcmp($catName,$firstCategory) == 0) {
                     array_push($allProducts, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
                 }
             } else {

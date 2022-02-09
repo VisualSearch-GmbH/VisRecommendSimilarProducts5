@@ -12,6 +12,14 @@
             <description lang="de">Bitte geben Sie Ihren API-Schlüssel ein</description>
             <description>Please enter your API key</description>
         </element>
+        <element required="true" type="boolean" scope="locale">
+            <name>autoUpdate</name>
+            <label lang="de">Automatische Updates aktiviert</label>
+            <label>Automatic updates enabled</label>
+            <value>false</value>
+            <description lang="de">Um die automatische Aktualisierung von Cross-Sellings zu aktivieren, aktivieren Sie dieses Feld.</description>
+            <description>To enable automatic updating of cross-sellings, turn on this box.</description>
+        </element>
         <element type="button">
             <name>buttonTest</name>
             <label lang="de">API-Zugangsdaten testen</label>

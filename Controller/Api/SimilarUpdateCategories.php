@@ -44,9 +44,8 @@ class Shopware_Controllers_Api_SimilarUpdateCategories extends \Shopware_Control
 
             $categories = [];
             foreach ($productTemp['categories'] as $category) {
-                array_push($categories, $category['id']);
+                array_push($categories, strval($category['id']));
             }
-            $categories = implode("-", $categories);
 
             $images = [];
             foreach ($productTemp['images'] as $image) {

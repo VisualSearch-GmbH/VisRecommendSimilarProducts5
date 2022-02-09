@@ -34,13 +34,13 @@ class RecommendationsController extends \Shopware_Controllers_Backend_ExtJs
         $apiKey = $config['apiKey'];
 
         // Create a connection
-        $url = 'https://api.visualsearch.wien/api_key_verify_similar';
+        $url = 'https://api.visualsearch.wien/api_key_verify';
         $ch = curl_init($url);
 
         // Setting our options
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json',
-            'Vis-API-KEY:' . $apiKey]);
+            'Vis-API-KEY:' . $apiKey, 'Vis-SOLUTION-TYPE: similar']);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         try {

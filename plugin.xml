@@ -5,7 +5,7 @@
     <label lang="de">Visuell Ähnliche Produktempfehlungen</label>
     <label>Visually Similar Product Recommendations</label>
 
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <copyright>(c) VisualSearch GmbH</copyright>
     <license>MIT</license>
     <link>https://github.com/VisualSearch-GmbH/VisRecommendSimilarProducts5</link>
