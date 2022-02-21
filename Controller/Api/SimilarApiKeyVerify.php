@@ -27,8 +27,14 @@ class Shopware_Controllers_Api_SimilarApiKeyVerify extends \Shopware_Controllers
             // Get the response
             $response = curl_exec($ch);
             curl_close($ch);
-            $msg = json_decode($response);
-            $this->View()->assign(['success' => "true"]);
+            $response = json_decode($response, true);
+
+            if ($response['message'] == "API key ok") {
+                $this->View()->assign(['success' => "true"]);
+            }
+            else {
+                $this->View()->assign(['success' => "false"]);
+            }
         } catch (Exception $e) {
             $msg = $e->getMessage();
             $this->View()->assign(['code' => $msg->{'code'}, 'message' => $msg]);

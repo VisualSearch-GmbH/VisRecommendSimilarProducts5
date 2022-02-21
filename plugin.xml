@@ -46,6 +46,15 @@
         ]]>
     </description>
 
+    <changelog version="1.0.1">
+        <changes lang="de">
+            Api verify key Abfrage wurde erweitert
+        </changes>
+        <changes>
+            Request api verify key was extended
+        </changes>
+    </changelog>
+
     <changelog version="1.0.0">
         <changes lang="de">
             Erste Version des Plugins
