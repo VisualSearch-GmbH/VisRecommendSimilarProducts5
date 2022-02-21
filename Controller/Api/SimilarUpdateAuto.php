@@ -89,7 +89,7 @@ class Shopware_Controllers_Api_SimilarUpdateAuto extends \Shopware_Controllers_A
                 array_push($images, $mediaService->getUrl($mediaPath[0]['path']));
             }
 
-            if (sizeof($productsIds) > 10000) {
+            if (sizeof($productsIds) > 30000) {
                 if (strcmp($catName,$firstCategory) == 0) {
                     array_push($allProducts, [$productTemp['id'], $productTemp['name'], $categories, '', array_values($images)[0]]);
                 }
