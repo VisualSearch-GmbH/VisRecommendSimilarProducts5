@@ -5,7 +5,7 @@
     <label lang="de">Visuell Ähnliche Produktempfehlungen</label>
     <label>Visually Similar Product Recommendations</label>
 
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <copyright>(c) VisualSearch GmbH</copyright>
     <license>MIT</license>
     <link>https://github.com/VisualSearch-GmbH/VisRecommendSimilarProducts5</link>
@@ -45,6 +45,15 @@
         <p>E-Mail: office@visualsearch.at, Web: <a href="https://www.visualsearch.at" target="_blank" rel="noreferrer">www.visualsearch.at</a>, Phone: +43 670 6017118</p>
         ]]>
     </description>
+
+    <changelog version="1.0.2">
+        <changes lang="de">
+            Configure layout of product detail page
+        </changes>
+        <changes>
+            Configure layout of product detail page
+        </changes>
+    </changelog>
 
     <changelog version="1.0.1">
         <changes lang="de">

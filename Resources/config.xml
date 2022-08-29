@@ -20,6 +20,14 @@
             <description lang="de">Um die automatische Aktualisierung von Cross-Sellings zu aktivieren, aktivieren Sie dieses Feld.</description>
             <description>To enable automatic updating of cross-sellings, turn on this box.</description>
         </element>
+        <element required="true" type="boolean" scope="locale">
+            <name>sliderPosition</name>
+            <label lang="de">Cross-Sellings zuerst anzeigen</label>
+            <label>Display cross sellings first</label>
+            <value>false</value>
+            <description lang="de">Die Konfiguration ändert das Layout der Produktdetailseite. Wenn dieses Feld markiert ist, werden die Cross-Sellings zuerst angezeigt und danach die Beschreibungen.</description>
+            <description>Configuration changes the layout in product details page. If checked, then cross sellings are displayed first and descriptions second.</description>
+        </element>
         <element type="button">
             <name>buttonTest</name>
             <label lang="de">API-Zugangsdaten testen</label>

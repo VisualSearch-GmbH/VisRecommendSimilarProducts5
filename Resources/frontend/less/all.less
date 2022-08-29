@@ -1,0 +1,65 @@
+.vis-tab-menu--cross-selling {
+  margin-bottom: 20px;
+
+  .tab--header {
+    &.is--active {
+      border-bottom: 1px solid @panel-border;
+    }
+  }
+
+  .tab--title {
+    .unitize-padding(10, 38, 10, 10);
+    .unitize(line-height, 20);
+    position: relative;
+    display: block;
+
+    &:hover {
+      color: @text-color;
+    }
+  }
+
+  .similar--content {
+    .product-slider {
+      min-height: auto;
+
+      .product--box {
+        &.box--image {
+          width: 100%;
+
+          .product--title {
+            white-space: normal;
+          }
+        }
+
+        .product--rating-container,
+        .product--btn-container,
+        .product--actions {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: @tabletViewportWidth) {
+  .vis-tab-menu--cross-selling {
+    .product--box {
+      &.box--image {
+        .product--info {
+          padding-left: 0;
+        }
+
+        .product--image {
+          width: auto;
+          position: relative;
+          height: 200px;
+          top: unset;
+          left: unset;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+
+

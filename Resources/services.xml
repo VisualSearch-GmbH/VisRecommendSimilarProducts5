@@ -3,19 +3,27 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-<services>
+    <services>
 
         <service id="vis_recommend_similar_products5.backend_controller_recommendations_controller"
                  class="VisRecommendSimilarProducts5\Controller\Backend\RecommendationsController">
             <argument type="service" id="http_client"/>
-            <argument type="service" id="vis_recommend_similar_products5.logger" />
+            <argument type="service" id="vis_recommend_similar_products5.logger"/>
             <tag name="shopware.controller" module="backend" controller="RecommendationsController"/>
         </service>
 
         <service id="vis_recommend_similar_products5.subscriber.controller_path"
-                 class="VisRecommendSimilarProducts5\Subscriber\ControllerPath" >
+                 class="VisRecommendSimilarProducts5\Subscriber\ControllerPath">
             <argument type="service" id="service_container"/>
             <argument>%vis_recommend_similar_products5.plugin_dir%</argument>
+            <tag name="shopware.event_subscriber"/>
+        </service>
+
+        <service id="vis_recommend_similar_products5.subscriber.frontend"
+                 class="VisRecommendSimilarProducts5\Subscriber\Frontend">
+            <argument type="service" id="service_container"/>
+            <argument>%vis_recommend_similar_products5.plugin_name%</argument>
+            <argument>%vis_recommend_similar_products5.view_dir%</argument>
             <tag name="shopware.event_subscriber"/>
         </service>
 

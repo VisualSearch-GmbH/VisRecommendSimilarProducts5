@@ -3,11 +3,22 @@
 namespace VisRecommendSimilarProducts5;
 
 use Shopware\Components\Plugin;
+use Shopware\Components\Plugin\Context\DeactivateContext;
 use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Components\Plugin\Context\UninstallContext;
+use Shopware\Components\Plugin\Context\UpdateContext;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class VisRecommendSimilarProducts5 extends Plugin
 {
+
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->setParameter($this->getContainerPrefix() . '.view_dir', $this->getPath() . '/Resources/views');
+    }
+
     public function install(InstallContext $context)
     {
         $this->createRole();
@@ -16,6 +27,8 @@ class VisRecommendSimilarProducts5 extends Plugin
 
         $hosts = $this->getHosts();
         $this->notification($hosts, $keys, 'shopware5;install');
+
+        $context->scheduleClearCache(InstallContext::CACHE_LIST_ALL);
     }
 
     public function uninstall(UninstallContext $context)
@@ -27,6 +40,21 @@ class VisRecommendSimilarProducts5 extends Plugin
 
         $hosts = $this->getHosts();
         $this->notification($hosts, '', 'shopware5;uninstall');
+
+        // Clear only cache when switching from active state to uninstall
+        if ($context->getPlugin()->getActive()) {
+            $context->scheduleClearCache(UninstallContext::CACHE_LIST_ALL);
+        }
+    }
+
+    public function update(UpdateContext $context)
+    {
+        $context->scheduleClearCache(UpdateContext::CACHE_LIST_ALL);
+    }
+
+    public function deactivate(DeactivateContext $context)
+    {
+        $context->scheduleClearCache(DeactivateContext::CACHE_LIST_ALL);
     }
 
     private function createResourcesAndPrivileges()
