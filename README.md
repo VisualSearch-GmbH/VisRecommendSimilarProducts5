@@ -1,7 +1,7 @@
 # Shopware5 - Recommend Similar Products
 
 ## Highlights
-* 10 days free testing with free support
+* 30 days free testing with free support
 * Increased conversion rate for the webshop
 * Does not need user privacy data
 * No labour costs with the maintenance of recommendations
@@ -19,7 +19,7 @@
 ## Description
 **Automatically generates visually similar product recommendations**
 
-We offer testing with support for 10 days for free!
+We offer testing with support for 30 days for free!
 
 This plugin provides automatic creation of visually similar recommendations for all available products. The creation of these recommendations is possible using an innovative algorithm that automatically finds visually related products in all available categories. These visually related products will be displayed in the product detail page as a cross-selling tab.
 
@@ -32,7 +32,7 @@ Below is an example of visually similar recommendations of a red jacket. Other e
 ## Installation
 
 * Install this plugin.
-* Request your API key. Follow the link in the plugin configuration "Please click here to get your API credentials" or visit our website https://www.visualsearch.at/index.php/credentials/. Once you contact our office, we will provide you with an API key and you can test this plugin for 10 days for free!
+* Request your API key. Follow the link in the plugin configuration "Please click here to get your API credentials" or visit our website https://www.visualsearch.at/index.php/credentials/. Once you contact our office, we will provide you with an API key and you can test this plugin for 30 days for free!
 * Please wait for an email with your API key.
 * In the configuration, paste the API key you received, press "Save" and optionally you can use the "Validate API credentials" button to check this key.
 * Please press "Save".
